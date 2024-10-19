@@ -286,7 +286,9 @@ footer {
   width: 90px;
   height: 120px;
 }
-
+@media (max-width: 584px) {
+  top: 9vh;
+}
 .menu {
   display: flex;
   justify-content: center;
