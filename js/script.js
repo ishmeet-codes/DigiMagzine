@@ -13,7 +13,7 @@ function closeNav() {
 }
 
 const totalImages = 132; // Total number of images
-const imagesPerPage = 4; // Number of page numbers shown at a time
+const imagesPerPage = 2; // Number of page numbers shown at a time
 
 // Load image from the server
 function loadImage(fileNumber) {
@@ -60,14 +60,19 @@ function updatePagination(currentPage) {
     const paginationContainer = document.getElementById('pagination');
     paginationContainer.innerHTML = ''; // Clear previous pagination buttons
 
-    let startPage = Math.floor((currentPage - 1) / imagesPerPage) * imagesPerPage + 1;
-    let endPage = Math.min(startPage + imagesPerPage - 1, totalImages);
+    // Define the number of visible page numbers
+    const pagesToShow = 4; // Show 4 page numbers at a time
+
+    // Calculate start and end page
+    let startPage = Math.floor((currentPage - 1) / pagesToShow) * pagesToShow + 1;
+    let endPage = Math.min(startPage + pagesToShow - 1, totalImages);
 
     // Create Previous button for pagination
-    if (startPage > 1) {
+    if (currentPage > 1) {
         let prevButton = document.createElement('button');
         prevButton.textContent = '«'; // Previous arrow
-        prevButton.addEventListener('click', () => changePage(startPage - imagesPerPage));
+        prevButton.classList.add('pagination-btn');
+        prevButton.addEventListener('click', () => changePage(currentPage - 1));
         paginationContainer.appendChild(prevButton);
     }
 
@@ -75,6 +80,7 @@ function updatePagination(currentPage) {
     for (let i = startPage; i <= endPage; i++) {
         let pageButton = document.createElement('button');
         pageButton.textContent = i;
+        pageButton.classList.add('pagination-btn');
         if (i === currentPage) {
             pageButton.disabled = true; // Highlight the current page
         }
@@ -85,10 +91,11 @@ function updatePagination(currentPage) {
     }
 
     // Create Next button
-    if (endPage < totalImages) {
+    if (currentPage < totalImages) {
         let nextButton = document.createElement('button');
         nextButton.textContent = '»'; // Next arrow
-        nextButton.addEventListener('click', () => changePage(startPage + imagesPerPage));
+        nextButton.classList.add('pagination-btn');
+        nextButton.addEventListener('click', () => changePage(currentPage + 1));
         paginationContainer.appendChild(nextButton);
     }
 }
@@ -108,59 +115,49 @@ document.getElementById('prevButton').addEventListener('click', function() {
     changePage(currentNumber - 1);
 });
 
-// Image zoom feature
 
-$(document).ready(function() {
-    let originalX = 50; // Original width in vw
-    let originalY = originalX * 1.414; // Original height in vw
-    let zoom = 100; // Initial zoom percentage
 
-    function updateBoxSize() {
-        let newX = (originalX * zoom) / 100; // Adjusted width based on zoom
-        let newY = newX * 1.414; // Adjusted height based on new width
-        $('#page-content').css({
-            width: newX + 'vw',
-            height: newY + 'vw'
-        });
+
+// Disable zooming with Ctrl + '+' and Ctrl + '-'
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '+' || event.key === '-')) {
+        event.preventDefault();
     }
-
-    // Zoom In button
-    $('#zoomInBtn').click(function() {
-        zoom += 10; // Increase zoom by 10%
-        updateBoxSize();
-    });
-
-    // Zoom Out button
-    $('#zoomOutBtn').click(function() {
-        zoom = Math.max(10, zoom - 10); // Decrease zoom by 10%, minimum is 10%
-        updateBoxSize();
-    });
-
-    // Reset button
-    $('#resetBtn').click(function() {
-        zoom = 100; // Reset zoom to 100%
-        updateBoxSize();
-    });
-
-    // Dropdown for predefined zoom options
-    $('#zoomDropdown').change(function() {
-        zoom = parseInt($(this).val()); // Get selected value from dropdown
-        updateBoxSize();
-    });
-
-    // Disable Ctrl + '+' and Ctrl + '-' for zooming in and out
-    $(document).keydown(function(e) {
-        if (e.ctrlKey && (e.key === '+' || e.key === '=' || e.key === '-')) {
-            e.preventDefault(); // Disable default browser zoom action
-        }
-    });
-
-    // Disable zoom with Ctrl + mouse scroll
-    window.addEventListener('wheel', function(e) {
-        if (e.ctrlKey) {
-            e.preventDefault(); // Prevent the default zoom behavior
-        }
-    }, { passive: false }); // passive: false allows e.preventDefault() in wheel event
-
-    updateBoxSize(); // Set initial box size
 });
+
+// Disable zooming with scroll wheel
+window.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+// zoom buttons
+const zoomInBtn = document.getElementById("zoomInBtn");
+        const zoomOutBtn = document.getElementById("zoomOutBtn");
+        const zoomResetBtn = document.getElementById("zoomResetBtn");
+        const image = document.getElementById("page-content");
+
+        // Predefined width in vw
+        let defaultWidth = 50;
+        let currentWidth = defaultWidth;
+
+        // Zoom In Button click event
+        zoomInBtn.addEventListener("click", () => {
+            currentWidth += 10; // Increase width by 10vw
+            image.style.width = currentWidth + "vh";
+        });
+
+        // Zoom Out Button click event
+        zoomOutBtn.addEventListener("click", () => {
+            if (currentWidth > 10) { // Prevent shrinking below 10vw
+                currentWidth -= 10; // Decrease width by 10vw
+                image.style.width = currentWidth + "vh";
+            }
+        });
+
+        // Reset Zoom Button click event
+        zoomResetBtn.addEventListener("click", () => {
+            currentWidth = defaultWidth; // Reset to default width
+            image.style.width = defaultWidth + "vh";
+        });

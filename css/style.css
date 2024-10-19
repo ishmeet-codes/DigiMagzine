@@ -1,39 +1,42 @@
+/* GLOBAL STYLES */
 body {
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px
+  margin: 0;
+  padding: 0;
 }
-/* HEADER CSS BEGINS*/
 
+/* HEADER STYLES */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0px;
-  margin-left: 0;
-  margin-right: 0;
-  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 2;
   background-color: #4D376D;
   padding: 5px;
 }
+
 .link {
   text-decoration: none;
 }
+
 .logo-gndec {
-  width: 100px;
-  height: 100px;
+  width: 5dvw;
+  height: 5dvw;
   margin-right: 10px;
 }
+
 .name {
-  font-size: 2.5vw;
+  font-size: 2dvw;
   font-weight: bold;
   color: #B9ADCF;
   font-family: 'Times New Roman', Times, serif;
-  margin: auto;
 }
+
 .openbtn {
-  font-size: 20px;
+  font-size: 1.5dvw;
   cursor: pointer;
   background-color: #B9ADCF;
   color: #4D376D;
@@ -41,162 +44,220 @@ header {
   border-radius: 9px;
   border: none;
 }
+
 .openbtn:hover {
   background-color: #B9ADCF;
 }
+
 #main {
   transition: margin-left .5s;
   padding: 16px;
 }
-/* HEADER CSS ENDS*/
 
-/* FOOTER CSS BEGINS*/
+/* FOOTER STYLES */
 .page0 {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2px;
 }
+
 .page0 button {
   padding: 2px 20px;
   margin: 0 5px;
   cursor: pointer;
 }
+
 .page0 span {
   display: flex;
 }
+
 .page0 span button {
   background-color: rgb(12, 12, 12);
   border: 1px solid #ddd;
   margin: 0 2px;
-  padding: 5px 10px;
+  padding: 2px 10px;
   cursor: pointer;
 }
+
 .page0 span button.active {
   background-color: #4caf50;
   color: white;
 }
+
 #pagination {
-  margin: 20px 0; /* Space around the pagination */
+  margin: 5px 0; /* Space around the pagination */
 }
+
 .credit {
   float: right;
   margin: 15px;
 }
-/* FOOTER CSS ENDS*/
 
-/* SECTION 1 CSS ENDS*/
-.pgnum {
-  border: #4D376D 1px solid;
-  border-radius: 25px;
-  padding: 2px;
-  margin: 9px;
-  width: 190px;
-  display: inline-flex;
-  position: absolute;
-  left:40%;
-  transform: translate (-50%, -50%) ;
-  background-color: #4D376D;
-  color: #B9ADCF;
-}
-.wrapper {
-  display: inline-flex;
-  list-style: none;
-  height: 120px;
-  width: 20vw;
-  padding-top: 40px;
-  font-family: "Poppins", sans-serif;
-  justify-content: center;
-}
-
-.wrapper .icon {
-  position: relative;
-  background: #fff;
-  z-index: 0;
-  border-radius: 50%;
-  margin: 10px;
-  width: 50px;
-  height: 50px;
-  font-size: 18px;
+/* MAIN CONTENT STYLES */
+.maincontent {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border: 1px solid transparent;
+  margin-top: 10px;
+  position: relative;
+  
 }
 
-.wrapper .icon::after {
-  content: "";
+footer {
+  margin-top: 0%;
+}
+#page-content {
+  width: 47dvh; 
+  aspect-ratio: 1 / 1.414;
+  object-fit: contain;
+  
+}
+
+/* BUTTON STYLES */
+.btn1, .btn2 {
+  font-size: 2vw !important;
+  color: #000;
+  background-color: transparent !important;
   position: absolute;
-  display: inline-block;
-  height: 100%;
-  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  
+}
+
+.btn1 {
+  left: 7dvw;
+}
+
+.btn2 {
+  right: 7dvw;
+}
+
+#nextButton, #prevButton {
+  font-style: oblique;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#nextButton:hover, #prevButton:hover {
   background-color: transparent;
-  z-index: -1;
-  border-radius: 50%;
-  top: 100%;
 }
-.wrapper .icon:hover:after {
-  animation: bg-pos 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1 both;
-  animation-timing-function: ease-in-out;
+.wrapper {
+  display: inline;
+}
+.wrapper > li{
+  display: inline;
+}
+.pg-num {
+  display: inline;
+  
+}
+.icon {
+  background-color: transparent;
+  color: #B9ADCF;
+}
+.page-number {
+  border: 1px solid transparent;
+  border-radius: 0px 0px 8px 8px;
+  width: 20dvw;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #4D376D;
+  color: #B9ADCF;
+  font-weight: bolder;
+  position: sticky;
+  padding: 0%;
+  padding-left: 10px;
+  top: 70px;
+  z-index: 2;
 }
 
-.wrapper .icon:hover {
-  color: #fff;
-  overflow: unset;
-  transition: color 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  animation: overflow-toggle 0.7s;
+
+
+/* PAGINATION STYLES */
+#pagination {
+  text-align: center;
+  margin: 20px 0;
+}
+#zoombtn {
+  background-color: transparent;
+}
+#zoomDropdown{
+  background-color: #4D376D;
+  color: #B9ADCF;
+}
+.pagination-btn {
+  background-color: #007BFF;  /* College-themed blue color */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.pagination-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.1);  /* Slightly enlarge button on hover */
+}
 
-@keyframes bg-pos {
-  0% {
-    top: 100%;
+.pagination-btn:disabled {
+  background-color: #6c757d;  /* Gray color for disabled button */
+  cursor: not-allowed;
+}
+
+/* ACTIVE PAGE BUTTON STYLING */
+.pagination-btn[disabled] {
+  opacity: 0.6; /* Faded look for disabled buttons */
+}
+
+.pagination-btn:focus {
+  outline: none; /* Remove outline on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle glow on focus */
+}
+
+.pagination-btn[disabled] {
+  background-color: #28a745;  /* College-themed green for the current page */
+  color: white;
+  font-weight: bold;
+  cursor: default;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 600px) {
+  .pagination-btn {
+    font-size: 14px;
+    padding: 8px 12px;
   }
-  100% {
-    top: 0;
-  }
 }
 
-@keyframes overflow-toggle {
-  0% {
-    overflow: hidden;
-  }
-  100% {
-    overflow: visible;
-  }
-}
-
-.icj {
-    color: blueviolet;
-    background-color: transparent;
-}
-
-/* SECTION 1 CSS ENDS*/
+/* SIDEBAR STYLES */
 .sidebar {
-  height: 80svh;
-  width:0;
+  height: 86dvh;
+  width: 0;
   position: fixed;
   z-index: 1;
-  top:100px;
+  top: 91px;
   right: 0;
   color: #4D376D;
   background-color: #B9ADCF;
   overflow-x: hidden;
   transition: 0.5s;
   overflow-y: scroll;
-  padding-top: 60px;
-  
+  padding-top: 10px;
 }
+
 .tcbutn {
   background-color: transparent;
-  border:none ;
+  border: none;
 }
+
 .sidebar a {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 0;
   text-decoration: none;
   font-size: 25px;
   color: #4D376D;
@@ -211,106 +272,49 @@ header {
 .sidebar .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 10px;
   font-size: 36px;
-  margin-left: 50px;
+  margin-left: 0;
 }
 
-.ampp{
+.table-content {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.ampp {
   width: 90px;
   height: 120px;
 }
-  .menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 5px;
-    font-weight: bold;
-    font: 1rem sans-serif;
-    border: 2px double blueviolet;
-    border-radius: 19px;
-  }
 
-.maincontent {
-  display: inline-block;
+.menu {
+  display: flex;
   justify-content: center;
   align-items: center;
-  align-self: center;
-  border: 1px solid transparent;
-  margin-top: 10px;
-  
-}
-#image-container{
-  display: inline;
+  padding: 4px 5px;
+  font-weight: bold;
+  font: 1rem sans-serif;
+  border: 2px double blueviolet;
+  border-radius: 19px;
 }
 
-/* CSS styles for responsiveness */
-#image-container {
-  min-width: 100vw; 
-  overflow: hidden;
-  text-align: center;
-  z-index: -1;
-  
-}
-#page-content {
-  width: 50vw;  
-  aspect-ratio: 1/1.414;
-}
-/* Optional: Style for pagination buttons */
-
-button {
+/* BUTTON STYLES */
+/*button {
   margin: 0 5px;
   padding: 10px 15px;
   font-size: 16px;
   border: 2px solid darkviolet;
   border-radius: 9px;
-  top: 45vw;    
-}  
-.btn1 {
-font-size: 1vw !important;
-color: #000;
-display: block;
-float: left;
-background-color: transparent !important ;
-position:absolute ;
-top: 50%;
-}
-#nextButton {
-  background-color: transparent;
-  right: 10px;
-  backdrop-filter: blur(10px);
-  font-style: oblique;
-  font-weight: bold;
-}
-#prevButton {
-  background-color: transparent;
-  backdrop-filter: blur(2px);
-  font-style: oblique;
-  font-weight: bold;
-}
-.btn2 {
-  font-size: 1vw !important;
-  color: #000;
-  display: inline;
-  align-items: end;
-  float: right;
-  background-color: transparent !important ;
-  position: absolute;
-  top: 60%; 
-  }
+}*/
+
+/* BAR STYLES */
 .bar1 {
   background-color: #4caf50;
 }
+
 .bar2 {
   background-color: aquamarine;
 }
-
-
-
-
-
-
-
 
 
 /* CREDITS CSS BEGINS */
