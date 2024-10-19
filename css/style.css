@@ -23,20 +23,20 @@ header {
 }
 
 .logo-gndec {
-  width: 5dvw;
-  height: 5dvw;
+  width: 8lvh;
+  height: 8lvh;
   margin-right: 10px;
 }
 
 .name {
-  font-size: 2dvw;
+  font-size: 3dvh;
   font-weight: bold;
   color: #B9ADCF;
   font-family: 'Times New Roman', Times, serif;
 }
 
 .openbtn {
-  font-size: 1.5dvw;
+  font-size: 1dvh;
   cursor: pointer;
   background-color: #B9ADCF;
   color: #4D376D;
