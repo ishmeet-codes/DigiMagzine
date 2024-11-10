@@ -55,6 +55,14 @@ function changePage(newFileNumber) {
     loadImage(newFileNumber);
     updatePagination(newFileNumber);
 }
+function updateCurrentPage(pageNumber) {
+    // Update the content of the 'currentPage' button
+    document.getElementById("currentFileNumber").textContent =  pageNumber;
+    
+    loadImage(pageNumber);
+    updatePagination(pageNumber);
+}
+
 
 function updatePagination(currentPage) {
     const paginationContainer = document.getElementById('pagination');

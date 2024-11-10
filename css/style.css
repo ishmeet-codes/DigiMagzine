@@ -29,14 +29,14 @@ header {
 }
 
 .name {
-  font-size: 3dvh;
+  font-size: 3vh;
   font-weight: bold;
   color: #B9ADCF;
   font-family: 'Times New Roman', Times, serif;
 }
 
 .openbtn {
-  font-size: 1dvh;
+  font-size: 1vh;
   cursor: pointer;
   background-color: #B9ADCF;
   color: #4D376D;
@@ -254,6 +254,7 @@ footer {
 .tcbutn {
   background-color: transparent;
   border: none;
+  border-bottom: 1px solid black;
 }
 
 .sidebar a {
@@ -286,9 +287,7 @@ footer {
   width: 90px;
   height: 120px;
 }
-@media (max-width: 584px) {
-  top: 9vh;
-}
+
 .menu {
   display: flex;
   justify-content: center;
