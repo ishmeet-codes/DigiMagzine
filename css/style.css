@@ -109,7 +109,7 @@ footer {
   margin-top: 0%;
 }
 #page-content {
-  width: 47dvh; 
+  width: 47vh; 
   aspect-ratio: 1 / 1.414;
   object-fit: contain;
   
@@ -127,11 +127,11 @@ footer {
 }
 
 .btn1 {
-  left: 7dvw;
+  left: 7vw;
 }
 
 .btn2 {
-  right: 7dvw;
+  right: 7vw;
 }
 
 #nextButton, #prevButton {
@@ -160,7 +160,7 @@ footer {
 .page-number {
   border: 1px solid transparent;
   border-radius: 0px 0px 8px 8px;
-  width: 20dvw;
+  width: 20vw;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -237,7 +237,7 @@ footer {
 
 /* SIDEBAR STYLES */
 .sidebar {
-  height: 86dvh;
+  height: 86vh;
   width: 0;
   position: fixed;
   z-index: 1;

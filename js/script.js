@@ -19,38 +19,22 @@ const imagesPerPage = 2; // Number of page numbers shown at a time
 function loadImage(fileNumber) {
     let imgElement = document.getElementById('page-content');
     let filePath = `https://digi-magazine-server.vercel.app/pages/${fileNumber}.png`;
-
-    console.log(`Loading image: ${filePath}`);  // Log the path to be loaded
-
     imgElement.src = filePath;
-
-    imgElement.onerror = function() {
-        console.error(`Failed to load image: ${filePath}`);
-        imgElement.src = '';  // Clear the src if not found
-        imgElement.alt = `Image ${fileNumber}.png not found`;
-    };
 }
 
 function changePage(newFileNumber) {
     if (newFileNumber > totalImages) {
         let userChoice = confirm("You have reached the last page. Do you want to review or exit?\nClick OK to review (go to the first page) or Cancel to exit.");
         if (userChoice) {
-            // User chose to review
-            window.location.href = '/'; // Redirect to the first page
+            window.location.href = '/'; 
         } else {
-            // User chose to exit
             window.location.href = 'https://causmic.gndec.ac.in/team';
         }
         return;
     }
-
     if (newFileNumber < 1) return;
-
-    console.log(`Changing to image number: ${newFileNumber}`);
-
     // Update the current file number display
     document.getElementById('currentFileNumber').textContent = newFileNumber;
-
     // Load the new image and update pagination
     loadImage(newFileNumber);
     updatePagination(newFileNumber);
@@ -140,32 +124,3 @@ window.addEventListener('wheel', function(event) {
     }
 }, { passive: false });
 
-// zoom buttons
-const zoomInBtn = document.getElementById("zoomInBtn");
-        const zoomOutBtn = document.getElementById("zoomOutBtn");
-        const zoomResetBtn = document.getElementById("zoomResetBtn");
-        const image = document.getElementById("page-content");
-
-        // Predefined width in vw
-        let defaultWidth = 50;
-        let currentWidth = defaultWidth;
-
-        // Zoom In Button click event
-        zoomInBtn.addEventListener("click", () => {
-            currentWidth += 10; // Increase width by 10vw
-            image.style.width = currentWidth + "vh";
-        });
-
-        // Zoom Out Button click event
-        zoomOutBtn.addEventListener("click", () => {
-            if (currentWidth > 10) { // Prevent shrinking below 10vw
-                currentWidth -= 10; // Decrease width by 10vw
-                image.style.width = currentWidth + "vh";
-            }
-        });
-
-        // Reset Zoom Button click event
-        zoomResetBtn.addEventListener("click", () => {
-            currentWidth = defaultWidth; // Reset to default width
-            image.style.width = defaultWidth + "vh";
-        });
