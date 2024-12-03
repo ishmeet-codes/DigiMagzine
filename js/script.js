@@ -123,3 +123,41 @@ window.addEventListener('wheel', function(event) {
         event.preventDefault();
     }
 }, { passive: false });
+
+const zoomInBtn = document.getElementById('zoomInBtn');
+    const zoomOutBtn = document.getElementById('zoomOutBtn');
+    const zoomResetBtn = document.getElementById('zoomResetBtn');
+    const zoomDropdown = document.getElementById('zoomDropdown');
+    const imageToZoom = document.getElementById('page-content');
+
+    let currentZoom = 100; // Default zoom level is 100%
+
+    // Zoom In
+    zoomInBtn.addEventListener('click', () => {
+        currentZoom += 10;
+        setZoom();
+    });
+
+    // Zoom Out
+    zoomOutBtn.addEventListener('click', () => {
+        currentZoom -= 10;
+        setZoom();
+    });
+
+    // Reset Zoom
+    zoomResetBtn.addEventListener('click', () => {
+        currentZoom = 100;
+        setZoom();
+    });
+
+    // Zoom from Dropdown
+    zoomDropdown.addEventListener('change', (e) => {
+        currentZoom = parseInt(e.target.value);
+        setZoom();
+    });
+
+    // Set zoom level to the image and page content
+    function setZoom() {
+        
+        imageToZoom.style.transform = `scale(${currentZoom / 100})`;
+    }
