@@ -102,10 +102,8 @@ header {
 }
 .pgnum {
   font-size: x-large;
-  display: block;
-  position: absolute;
+  display: flex; justify-content: center; 
   color:#4D376D;
-  left:50%;
   padding: auto;
   align-items: center;
   transform: translate (-50%, -50%) ;
